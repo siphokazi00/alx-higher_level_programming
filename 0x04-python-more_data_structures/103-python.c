@@ -1,6 +1,32 @@
 #include <Python.h>
 
 /**
+ * print_python_bytes - Print information about a Python bytes object
+ * @p: Pointer to a Python object (bytes)
+ *
+ * Description: This function prints information about a Python bytes object,
+ * including its size, the first 10 bytes in hexadecimal format, and the
+ * corresponding string representation.
+ */
+void print_python_bytes(PyObject *p)
+{
+	PyBytesObject *bytes = (PyBytesObject *)p;
+	Py_ssize_t size = PyBytes_Size(p);
+	Py_ssize_t i;
+
+	printf("[.] bytes object info\n");
+	printf("  size: %ld\n", size);
+	printf("  trying string: %s\n", PyBytes_AsString(p));
+
+	printf("  first 10 bytes: ");
+	for (i = 0; i < size && i < 10; i++)
+	{
+		printf("%02x ", (unsigned char)bytes->ob_sval[i]);
+	}
+	printf("\n");
+}
+
+/**
  * print_python_list - Print information about a Python list
  * @p: Pointer to a Python object (list)
  *
@@ -27,30 +53,4 @@ void print_python_list(PyObject *p)
 			print_python_bytes(list->ob_item[i]);
 		}
 	}
-}
-
-/**
- * print_python_bytes - Print information about a Python bytes object
- * @p: Pointer to a Python object (bytes)
- *
- * Description: This function prints information about a Python bytes object,
- * including its size, the first 10 bytes in hexadecimal format, and the
- * corresponding string representation.
- */
-void print_python_bytes(PyObject *p)
-{
-	PyBytesObject *bytes = (PyBytesObject *)p;
-	Py_ssize_t size = PyBytes_Size(p);
-	Py_ssize_t i;
-
-	printf("[.] bytes object info\n");
-	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", PyBytes_AsString(p));
-
-	printf("  first 10 bytes: ");
-	for (i = 0; i < size && i < 10; i++)
-	{
-		printf("%02x ", (unsigned char)bytes->ob_sval[i]);
-	}
-	printf("\n");
 }
