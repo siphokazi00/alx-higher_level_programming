@@ -1,8 +1,11 @@
 #!/usr/bin/python3
+"""Import sys module"""
 import sys
 
 
 def is_safe(board, row, col):
+    """Checks if it's safe to place queen"""
+
     # Check if there is a queen in the same column
     for i in range(row):
         if board[i][col] == 1:
@@ -22,6 +25,8 @@ def is_safe(board, row, col):
 
 
 def solve_nqueens(n):
+    """Solves the N-Queens problem."""
+
     def solve_util(board, row):
         if row == n:
             solutions.append([[i, j]
@@ -43,6 +48,8 @@ def solve_nqueens(n):
 
 
 def print_solutions(solutions):
+    """Prints the solutions to the N-Queens problem."""
+
     for solution in solutions:
         print(solution)
 
