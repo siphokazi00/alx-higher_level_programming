@@ -1,25 +1,15 @@
 #!/usr/bin/python3
 """Defines a script that adds all args to a py list"""
 import sys
-import os
 
-# Import functions
-from 5-save_to_json_file import save_to_json_file
-from 6-load_from_json_file import load_from_json_file
+if __name__ == "__main__":
+    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+    load_from_json_file = \
+        __import__('6-load_from_json_file').load_from_json_file
 
-# Check if JSON file already exists
-json_filename = 'add_item.json'
-data = []
-
-# Load JSON file if it exists
-if os.path.exists(json_filename):
-    data = load_from_json_file(json_filename)
-
-# Append command-line arguments to list
-data.extend(sys.argv[1:])
-
-# Save updated list to JSON file
-save_to_json_file(data, json_filename)
-
-# Print list
-print(data)
+    try:
+        items = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        items = []
+    items.extend(sys.argv[1:])
+    save_to_json_file(items, "add_item.json")
