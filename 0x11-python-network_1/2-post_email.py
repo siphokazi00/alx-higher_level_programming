@@ -22,7 +22,7 @@ def send_post_request(url, email):
 
 if __name__ == "__main__":
     # Example usage:
-    target_url = "http://0.0.0.0:5000/post_email"
+    target_url = "http://0.0.0.0:5000/post_email hr@holbertonschool.com"
     user_email = "hr@holbertonschool.com"
 
     response_body = send_post_request(target_url, user_email)
