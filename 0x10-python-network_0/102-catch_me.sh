@@ -1,3 +1,9 @@
 #!/bin/bash
 # Makes a req to 0.0.0.0:5000/catch_me
-curl -s -X PUT -d "status=You got me!" 0.0.0.0:5000/catch_me >/dev/null
+HTTP_CODE=$(curl --write-out "%{http_code}\\n" "http://0.0.0.0:5000/catch_me")
+
+if [[ "$HTTP_CODE" -eq 200 ]]; then
+    echo "You got me!"
+else
+    echo "Oops, something went wrong!"
+fi
