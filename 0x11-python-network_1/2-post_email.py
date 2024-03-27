@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
     Takes in URL and email, send POST request to it with email as parameter.
 """
