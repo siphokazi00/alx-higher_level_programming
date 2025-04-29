@@ -5,13 +5,11 @@ a = 10
 b = 5
 
 result_add = add(a, b)
-print("{} + {} = {}".format(a, b, result_add)
-
 result_sub = sub(a, b)
-print("{} - {} = {}".format(a, b, result_sub)
-
 result_mul = mul(a, b)
-print("{} * {} = {}".format(a, b, result_mul)
-
 result_div = div(a, b)
-print("{} / {} = {}".format(a, b, result_div)
+
+print("{} + {} = {}".format(a, b, result_add))
+print("{} - {} = {}".format(a, b, result_sub))
+print("{} * {} = {}".format(a, b, result_mul))
+print("{} / {} = {}".format(a, b, result_div))
